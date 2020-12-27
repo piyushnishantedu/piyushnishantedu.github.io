@@ -102,51 +102,317 @@
                                             </li>
                                         </ul>
 									</header>
-									<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
+									<p>The cost of mis-classification is very heigh. If there is very minute change in question it may
+										be possible that question is not duplicate. So we set probablity of similar question is very high
+										P(question1 == question2) = 0.99.
+										There may not be strict latency becaues we take few second to show the list of answer if 
+										question is duplicate.
+										Interpretability is not there becau we are showing about duplacte question clarification to the user
+									</p>
 									<header>
 										<h3>Data Collection</h3>
-										<p>Data Collection process</p>
+										<p>We collect data from 
+											<a href="https://www.kaggle.com/c/quora-question-pairs ">Kaggle</a>
+											There are two zip fiels.
+											<ul>
+												<li>
+													Training csv file in train.zip
+												</li>
+												<li>
+													Testing csv file in test.zip
+												</li>
+											</ul>
+										</p>
 									</header>
-									<p>How to collect data</p>
+									<header>
+										<h3>Read data file</h3>
+										<p>We read data file using python zipfile package</p>
+										<code>
+											zf = zipfile.ZipFile(train_path) <br/>
+											df = pd.read_csv(zf.open('train.csv'))
+										</code>
+									</header>
+
 									<header>
 										<h3>Basic Data Analysis</h3>
-										<p>Data Collection process</p>
+										<h4>Basic Statics</h4>
+										<span class="image fit"><img src="assets/quora/basic_stat1.png" alt="" /> </span>
 									</header>
-                                    <p>How to collect data</p>
+									<p>We get following information</p>
+									<ul>
+										<li>
+											There are 404290 data points
+										</li>
+										<li>
+											Number of columns are 6
+										</li>
+										<li>
+											Following are the column names
+											<ul>
+												<li>
+													id: Unique identifier for single data point.
+												</li>
+												<li>
+													qid1: Unique identifier for question 1 
+												</li>
+												<li>
+													qid2: Unique identifier for question 2
+												</li>
+												<li>
+													question1: The question1 description
+												</li>
+												<li>
+													question2: The question2 description.
+												</li>
+												<li>
+													is_duplicate: This is the target varibale which has two value 0 and 1
+												</li>
+											</ul>
+										</li>
+									</ul>
+									<span class="image fit"><img src="assets/quora/basic_stat2.png" alt="" /> </span>
+									<p>
+										There are one question from question1 is null and two question from question2 is null.
+									</p>
+									<header>
+										<h4>Data cleaning</h4>
+										<p>We replace the null question text by empty string</p>
+										<code>df['question1'].fillna('')<br/>
+										df['question2'].fillna('')</code>
+									</header>
                                     <header>
 										<h3>Exploratory Data Analysis</h3>
-										<p>Data Collection process</p>
+										<h4>Data distributation</h4>
+										<span class="image fit"><img src="assets/quora/eda1.png" alt="" /> </span>
+										<span class="image fit"><img src="assets/quora/eda2.png" alt="" /> </span>
+										<p>The data set has binary target(0 or 1) and there are more data 
+											points having is_duplicate 0. Means the data set slightly imbalance.
+											36.9% data points are duplicate and 63.1% data points are not duplicate.
+										</p>
 									</header>
-                                    <p>How to collect data</p>
+									<p>Total Number of unique questions = 537933<br/></p>
+									<p>Number of questions occur more than one time = 111780</p>
+									<h3>Number of unique questions</h3>
+									<span class="image fit"><img src="assets/quora/eda4.png" alt="" /> </span>
+									<p>
+										There are large question which are unique and very few questions are repeated
+									</p>
                                     <header>
 										<h3>Data Cleaning</h3>
-										<p>Data Collection process</p>
+										<p>We fill question1 and question2 text which are nil by empty string</p>
+										<code>
+											df['question1'].fillna('')<br/>
+											df['question2'].fillna('')
+										</code>
 									</header>
-                                    <p>How to collect data</p>
+									<header>
+										<h4>Checking for Duplicates</h4>
+										<span class="image fit"><img src="assets/quora/eda5.png" alt="" /> </span>
+										<p>There are no questions which duplicates</p>
+									</header>
+									<header>
+										<h4>Question occurrences</h4>
+										<span class="image fit"><img src="assets/quora/eda6.png" alt="" /> </span>
+										<ul>
+											<li>
+												There are more questions which occur single time.
+											</li>
+											<li>
+												Feq questions ocuuring multiple times
+											</li>
+											<li>
+												Some questions occuring arround 157 times
+											</li>
+										
+										</ul>
+									</header>
                                     <header>
 										<h3>Data Preprocession</h3>
-										<p>Data Collection process</p>
+										<ul>
+											<li>
+												Removing html tags by using BeautifulSoup
+											</li>
+											<li>
+												Removing Punctuations
+											</li>
+											<li>
+												Performing stemming
+											</li>
+											<li>
+												Removing Stopwords
+											</li>
+											<li>
+												Expanding contractions etc.
+											</li>
+										</ul>
+										<span class="image fit"><img src="assets/quora/eda7.png" alt="" /> </span>
+										<span class="image fit"><img src="assets/quora/eda8.png" alt="" /> </span>
 									</header>
-                                    <p>How to collect data</p>
+                                    
                                     
                                     <header>
 										<h3>Feature Engineering</h3>
-										<p>Data Collection process</p>
+							
 									</header>
-                                    <p>How to collect data</p>
+                                    
                                     
                                     <header>
-										<h4>Features before Data cleaning</h4>
-										<p>Data Collection process</p>
+										<h4>Features Engineering before Data cleaning</h4>
+										<p>Create basic features</p>
+										<ul>
+											<li>
+												freq_qid1 = Frequency of qid1's
+											</li>
+											<li>
+												freq_qid2 = Frequency of qid2's
+											</li>
+											<li>
+												q1len = Length of q1
+											</li>
+											<li>
+												q2len = Length of q2
+											</li>
+											<li>
+												q1_n_words = Number of words in Question 1
+											</li>
+											<li>
+												q2_n_words = Number of words in Question 2
+											</li>
+											<li>
+												word_Common = (Number of common unique words in Question 1 and Question 2)
+											</li>
+											<li>
+												word_Total =(Total num of words in Question 1 + Total num of words in Question 2)
+											</li>
+											<li>
+												word_share = (word_common)/(word_Total)
+											</li>
+											<li>
+												freq_q1+freq_q2 = sum total of frequency of qid1 and qid2
+											</li>
+											<li>
+												freq_q1-freq_q2 = absolute difference of frequency of qid1 and qid2
+											</li>
+										</ul>
+										<span class="image fit"><img src="assets/quora/eda9.png" alt="" /> </span>
+										<span class="image fit"><img src="assets/quora/eda10.png" alt="" /> </span>
 									</header>
-                                    <p>How to collect data</p>
+                                    <header>
+										<h5>Analysis of some of the extracted features</h5>
+										<span class="image fit"><img src="assets/quora/eda11.png" alt="" /> </span>
+										<h6>Analysis of word_share</h6>
+										<span class="image fit"><img src="assets/quora/eda12.png" alt="" /> </span>
+										<h6>Analysis of word_Common</h6>
+										<span class="image fit"><img src="assets/quora/eda13.png" alt="" /> </span>
+										<p>The distributions of the word_Common feature in similar and non-similar questions are highly 
+											overlapping So we are not able to give any explanation for this feature</p>
+									</header>
                                     
                                     <header>
 										<h4>Features after data cleaning</h4>
-										<p>Data Collection process</p>
+										<h5>Advanced Feature Extraction (NLP and Fuzzy Features)</h5>
+										<p>Definition:</p>
+										<ul>
+											<li>
+												Token: You get a token by splitting sentence a space
+											</li>
+											<li>
+												Stop_Word : stop words as per NLTK.
+											</li>
+											<li>
+												Word : A token that is not a stop_word
+											</li>
+								
+										</ul>
+										<p>Features:</p>
+										<ul>
+											<li>
+												cwc_min : Ratio of common_word_count to min lenghth of word count of Q1 and Q2 
+cwc_min = common_word_count / (min(len(q1_words), len(q2_words))
+											</li>
+											<li>
+												cwc_max : Ratio of common_word_count to max lenghth of word count of Q1 and Q2 
+cwc_max = common_word_count / (max(len(q1_words), len(q2_words))
+											</li>
+											<li>
+												csc_min : Ratio of common_stop_count to min lenghth of stop count of Q1 and Q2 
+csc_min = common_stop_count / (min(len(q1_stops), len(q2_stops))
+											</li>
+											<li>
+												csc_max : Ratio of common_stop_count to max lenghth of stop count of Q1 and Q2
+csc_max = common_stop_count / (max(len(q1_stops), len(q2_stops))
+											</li>
+											<li>
+												ctc_min : Ratio of common_token_count to min lenghth of token count of Q1 and Q2
+ctc_min = common_token_count / (min(len(q1_tokens), len(q2_tokens))
+											</li>
+											<li>
+												ctc_max : Ratio of common_token_count to max lenghth of token count of Q1 and Q2
+ctc_max = common_token_count / (max(len(q1_tokens), len(q2_tokens))
+											</li>
+											<li>
+												last_word_eq : Check if First word of both questions is equal or not
+last_word_eq = int(q1_tokens[-1] == q2_tokens[-1])
+											</li>
+											<li>
+												first_word_eq : Check if First word of both questions is equal or not
+first_word_eq = int(q1_tokens[0] == q2_tokens[0])
+											</li>
+											<li>
+												abs_len_diff : Abs. length difference
+abs_len_diff = abs(len(q1_tokens) - len(q2_tokens))
+											</li>
+											<li>
+												mean_len : Average Token Length of both Questions
+mean_len = (len(q1_tokens) + len(q2_tokens))/2
+											</li>
+											<li>
+												fuzz_ratio : <a href=" https://github.com/seatgeek/fuzzywuzzy#usage http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/"> https://github.com/seatgeek/fuzzywuzzy#usage http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/</a>
+											</li>
+											<li>
+												fuzz_partial_ratio : <a href=" https://github.com/seatgeek/fuzzywuzzy#usage http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/"> https://github.com/seatgeek/fuzzywuzzy#usage http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/</a>
+											</li>
+											<li>
+												token_sort_ratio : <a href=" https://github.com/seatgeek/fuzzywuzzy#usage http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/"> https://github.com/seatgeek/fuzzywuzzy#usage http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/</a>
+											</li>
+											<li>
+												token_set_ratio : <a href=" https://github.com/seatgeek/fuzzywuzzy#usage http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/"> https://github.com/seatgeek/fuzzywuzzy#usage http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/</a>
+											</li>
+											<li>
+												longest_substr_ratio : Ratio of length longest common substring to min lenghth of token count of Q1 and Q2
+												longest_substr_ratio = len(longest common substring) / (min(len(q1_tokens), len(q2_tokens))
+											</li>
+										</ul>
 									</header>
-                                    <p>How to collect data</p>
-                                    
+                                    <header>
+
+									</header>
+									<h5>Word Analysis</h5>
+									<span class="image fit"><img src="assets/quora/eda14.png" alt="" /> </span>
+									<p>The more frequent words ocuuring in duplicate questions</p>
+									<span class="image fit"><img src="assets/quora/eda15.png" alt="" /> </span>
+									<p>The more frequent words ocuuring in non-duplicate questions</p>
+									<h5>Pair plot of some features</h5>
+									<span class="image fit"><img src="assets/quora/eda16.png" alt="" /> </span>
+									<span class="image fit"><img src="assets/quora/eda17.png" alt="" /> </span>
+									<p>The plot shows that there is clear seperation with some overlapping
+										so these features are important for model </p>
+										<span class="image fit"><img src="assets/quora/eda18.png" alt="" /> </span>
+										<span class="image fit"><img src="assets/quora/eda19.png" alt="" /> </span>
+									<p>Some part of these features are distinguishing the duplicate question</p>
+									<header>
+										<h4>Other features</h4>
+										<ul>
+											<li>
+												Create weighted TFIDF W2V feature for question1
+											</li>
+											<li>
+												Create weighted TFIDF W2V feature for question2
+											</li>
+										</ul>
+										<span class="image fit"><img src="assets/quora/eda20.png" alt="" /> </span>
+										<span class="image fit"><img src="assets/quora/eda21.png" alt="" /> </span>
+									</header>
                                     <header>
 										<h3>Final Features</h3>
 										<p>Data Collection process</p>
