@@ -415,33 +415,53 @@ mean_len = (len(q1_tokens) + len(q2_tokens))/2
 									</header>
                                     <header>
 										<h3>Final Features</h3>
-										<p>Data Collection process</p>
+										<span class="image fit"><img src="assets/quora/eda22.png" alt="" /> </span>
+										<p>There are total 218 features for each data point. Total features
+											are combination of features before cleaning data set and features after clearning
+											data. Before cleaning features include basic feature related to word count and word 
+											shares. After cleaning features include features generated from nlp processing.
+										</p>
 									</header>
-                                    <p>How to collect data</p>
+                            
 
                                     <header>
-										<h3>Train Test Split</h3>
-										<p>Data Collection process</p>
+										<h3>Random train test split( 70:30)</h3>
+										<span class="image fit"><img src="assets/quora/eda23.png" alt="" /> </span>
+										<p>We choose data split in 70:30 ratio. The distributation of 
+											target varibale is same in train and test data set.
+										</p>
 									</header>
-                                    <p>How to collect data</p>
+                                    
                                     
                                     <header>
 										<h3>Model Building</h3>
-										<p>Data Collection process</p>
+							
 									</header>
-                                    <p>How to collect data</p>
+                                    
                                     
                                     <header>
-										<h4>Random Model</h4>
-										<p>Data Collection process</p>
+										<h4>Random model (Finding worst-case log-loss)</h4>
+										<span class="image fit"><img src="assets/quora/eda24.png" alt="" /> </span>
 									</header>
-                                    <p>How to collect data</p>
+                                    <p>The worst log-loss in random model is 0.8863005353405078.
+										If our other model has log-loss less than 0.88 then my model is improving
+										other wise it will be worse than random model.
+									</p>
                                     
                                     <header>
 										<h4>Logistic Regression</h4>
-										<p>Data Collection process</p>
+										<p>We selecr alpha as hyper-parameter</p>
+										<code>
+											alpha = [10 ** x for x in range(-5, 2)] # hyperparam for SGD classifier.
+										</code>
+										<span class="image fit"><img src="assets/quora/eda25.png" alt="" /> </span>
+										<span class="image fit"><img src="assets/quora/eda26.png" alt="" /> </span>
 									</header>
-                                    <p>How to collect data</p>
+                                    <p>We use SGDClassifier
+										with penalty l2, loss is log-loss. Best alpha is 0.01 for train log loss and log loss is: 0.4336890077328185
+										With best alpha test log loss is 0.43471121297003057
+										So there is verly subtle difference in train and test log loss hence model is not over fitting.
+									</p>
                                     
                                     <header>
 										<h4>Linear SVM</h4>
