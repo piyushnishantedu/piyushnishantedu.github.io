@@ -1,0 +1,318 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Personalized cancer diagnosis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="#" class="logo">Personalized cancer diagnosis</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+                            <!--
+							<li><a href="index.html">This is Massively</a></li>
+							<li><a href="generic.html">Generic Page</a></li>-->
+							<li class="active"><a href="#">Personalized cancer diagnosis</a></li>
+						</ul>
+						<ul class="icons">
+                            <!--
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                            
+							<li><a href="https://github.com/piyushnishantedu/Quora-Question-Pair-Similarity" class="icon brands fa-github"><span class="label">GitHub</span></a></li>-->
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Personalized cancer diagnosis<br />
+                                    </h1>
+								</header>
+								<h2>Problem Statement</h2>
+								<ul>
+									<li>Classify the given genetic variations/mutations based on evidence from text-based clinical literature.</li>
+								</ul>
+								<h2>Data gethering</h2>
+								<ul>
+									<li>
+										Download the data set from kaggle.
+									</li>
+									<li>
+										Data source: https://www.kaggle.com/c/msk-redefining-cancer-treatment/discussion/35336#198462 (https://www.kaggle.com/c/msk-redefining-cancer-treatment/discussion/35336#198462)
+									</li>
+								</ul>
+								<h2>Use ful links to understand the problem in better way</h2>
+								<ol>
+									<li>
+										https://www.forbes.com/sites/matthewherper/2017/06/03/a-new-cancer-drug-helped-almost-everyone- who-took-it-almost-heres-what-it-teaches-us/#2a44ee2f6b25
+										(https://www.forbes.com/sites/matthewherper/2017/06/03/a-new-cancer-drug-helped-almost-everyone- who-took-it-almost-heres-what-it-teaches-us/#2a44ee2f6b25)
+									</li>
+									<li>
+										 https://www.youtube.com/watch?v=UwbuW7oK8rk (https://www.youtube.com/watch?v=UwbuW7oK8rk)
+
+									</li>
+									<li>
+										 https://www.youtube.com/watch?v=qxXRKVompI8 (https://www.youtube.com/watch?v=qxXRKVompI8)
+									</li>
+								</ol>
+								<h2>Business Objectives and constraints</h2>
+								<ul>
+									<li>
+										No low-latency requirement.
+									</li>
+									<li>
+										Interpretability is important.
+									</li>
+									<li>
+										Errors can be very costly.
+									</li>
+									<li>
+										Probability of a data-point belonging to each class is needed.
+									</li>
+								</ul>
+								<h2>Data over view</h2>
+								<ul>
+									<li>
+										Download the data set from kaggle source.
+									</li>
+									<li>
+										We have two data files: one conatins the information about the genetic mutations and the other contains the clinical evidence (text) that human experts/pathologists use to classify the genetic mutations.
+									</li>
+									<li>
+										Both these data files are have a common column called ID
+									</li>
+									<li>
+										Data file's information:
+										<li>
+											training_variants (ID , Gene, Variations, Class)
+										</li>
+										<li>
+											training_text (ID, Text)
+										</li>
+									</li>
+								</ul>
+								<h2>Example Data points</h2>
+								<h3>training_variants</h3>
+								<p>ID,Gene,Variation,</br>Class 0,FAM58A,</br>Truncating Mutations,1</br> 1,CBL,W802*,</br>2
+2,CBL,Q249E,2</p>
+<h3>training_text</h3>
+<p>ID,Text</br>
+0||Cyclin-dependent kinases (CDKs) regulate a variety of fundamental cellular processes. CDK10 stands out as one of the last orphan CDKs for which no activating cyclin has been identified and no kinase activity revealed. Previous work has shown that CDK10 silencing increases ETS2 (v-ets erythroblastosis virus E26 oncogene homolog 2)-driven activation of the MAPK pathway, which confers tamoxifen resistance to breast cancer cells. The precise mechanisms by which CDK10 modulates ETS2 activity, and more generally the functions of CDK10, remain elusive. Here we demonstrate that CDK10 is a cyclin-dependent kinase by identifying cyclin M as an activating cyclin. Cyclin M, an orphan cyclin, is the product of FAM58A, whose mutations cause STAR syndrome, a human developmental anomaly whose features include toe syndactyly, telecanthus, and anogenital and renal malformations. We show that STAR syndrome-associated cyclin M mutants are unable to interact with CDK10. Cyclin M silencing phenocopies CDK10 silencing in increasing c- Raf and in conferring tamoxifen resistance to breast cancer cells. CDK10/cyclin M phosphorylates ETS2 in vitro, and in cells it positively controls ETS2 degradation by the proteasome. ETS2 protein levels are increased in cells derived from a STAR patient, and this increase is attributable to decreased cyclin M levels. Altogether, our results reveal an additional regulatory mechanism for ETS2, which plays key roles in cancer and development. They also shed light on the molecular mechanisms underlying STAR syndrome.Cyclin- dependent kinases (CDKs) play a pivotal role in the control of a number of fundamental cellular processes (1). The human genome contains 21 genes encoding proteins that can be considered as members of the CDK family owing to their sequence similarity with bona fide CDKs, those known to be activated by cyclins (2). Although discovered almost 20 y ago (3, 4), CDK10 remains one of the two CDKs without an identified cyclin partner. This knowledge gap has largely impeded the exploration of its biological functions. CDK10 can act as a positive cell cycle regulator in some cells (5, 6) or as a tumor suppressor in others (7, 8). CDK10 interacts with the ETS2 (v-ets erythroblastosis virus E26 oncogene homolog 2) transcription factor and inhibits its transcriptional activity through an unknown mechanism (9). CDK10 knockdown derepresses ETS2, which increases the expression of the c-Raf protein kinase, activates the MAPK pathway, and induces resistance of MCF7 cells to tamoxifen (6).</p>
+<h2>Performance Metric</h2>
+<p>Source https://www.kaggle.com/c/msk-redefining-cancer-treatment#evaluation (https://www.kaggle.com/c/msk-redefining-cancer-treatment#evaluation)
+</p></br>
+<h4>Metric(s):</h4>
+<ul>
+	<li>Multi class log-loss</li>
+	<li>Confusion matrix</li>
+</ul>
+<h3>Machine Learing Objectives and Constraints</h3>
+<p>Objective: Predict the probability of each data-point belonging to each of the nine classes.</p></br>
+<p>Constraints:</p></br>
+<ul>
+	<li>
+		Interpretability
+	</li>
+	<li>
+		Class probabilities are needed.
+	</li>
+	<li>
+		Penalize the errors in class probabilites => Metric is Log-loss.
+	</li>
+	<li>
+		No Latency constraints.
+	</li>
+</ul>
+<h4>Split the training data set into three parts train, validation and test set. Validation set is used for hyper parameter tuning and test set is completely unknown for the trained model. We split the data set in 64%, 16% and 20%. 64% of total data is used for traininng, 16% data used for testing and 20% data for validations</h4>
+<h2>Data descriptions</h2>
+<ul>
+	<li>
+		Traing variant is comma seperated file having unique id, gene, variation and class columns
+	</li>
+	<li>
+		ID : the id of the row used to link the mutation to the clinical evidence
+	</li>
+	<li>
+		Gene : the gene where this genetic mutation is located
+	</li>
+	<li>
+		Variation : the aminoacid change for this mutations
+	</li>
+	<li>Class : 1-9 the class this genetic mutation has been classified on</li>
+	<li>training_text file having two columns one is uniqu id and other is text
+</li>
+</ul>
+<h2>Steps</h2>
+<ul>
+	<li>merge two files on the basis of unique id column valus.</li>
+	<li>create a single file which has the fetures from both files.</li>
+</ul>
+<h3>Step 1: Preprocessing</h3>
+<ul>
+	<li>
+		Remove all special characters from text data and replace it with space.
+	</li>
+	<li>
+		replace multiple white spaces with one white space
+	</li>
+	<li>
+		normalize text by lowering the characters in the word or sentences.
+	</li>
+	<li>
+		Remove all the stop words from text data
+	</li>
+</ul>
+<h3>Step-2: Data cleaning</h3>
+<ul>
+	<li>After merging two files there are many rows havinmg text data column value are NAN.</li>
+	<li>replace NAN value from text column by concatenating gene and variation columns
+</li>
+</ul>
+<h2>Data split</h2>
+<ul>
+	<li>split the data into three sets traiing testing and validation</li>
+	<li>validation data set used for bias variance tradeoff to tune hyper parameter</li>
+	<li>After split the data set the number of classes are not balanced means the target variables are imbalanced and some of the classes are highly imbalance</li>
+	<li>Number of data points in class 7 : 609 ( 28.672 %)</li>
+	<li>Number of data points in class 4 : 439 ( 20.669 %)</li>
+	<li>Number of data points in class 1 : 363 ( 17.09 %)</li>
+	<li>Number of data points in class 2 : 289 ( 13.606 %)</li>
+	<li>Number of data points in class 6 : 176 ( 8.286 %)</li>
+	<li>Number of data points in class 5 : 155 ( 7.298 %)</li>
+	<li>Number of data points in class 3 : 57 ( 2.684 %)</li>
+	<li>Number of data points in class 9 : 24 ( 1.13 %)</li>
+	<li>Number of data points in class 8 : 12 ( 0.565 %)</li>
+</ul>
+<h2>Univeriate Analysis</h2>
+<ul>
+	<li>After doing univeriate analysis we found the followings</li>
+	<li>Gene is a categorical variable</li>
+	<li>Number of Unique Genes : 234
+		<ul>
+			<li>BRCA1 176</li>
+			<li>TP53 113</li>
+			<li>EGFR 95</li>
+			<li>BRCA2 82 </li><li>PTEN 67 </li><li>BRAF 61</li><li> KIT 60 ERBB2 42</li>
+			<li>ALK 40</li>
+			<li>PDGFRA 36</li>
+		</ul>
+	</li>
+	<li>Encode the Gene feature by using two methods
+		<ul>
+			<li>Response encoding</li>
+			<li>One hot encoding</li>
+		</ul>
+	</li>
+	<li>Variation is a categorical variable
+		<ul>
+			<li>Number of Unique Variations : 1936 Truncating_Mutations 59 Amplification 48</li>
+<li>Deletion 46</li>
+<li>Fusions 17</li>
+<li>T58I 3 Overexpression 3 E17K 3</li>
+<li>Q61L 3</li>
+<li>Y64A 2</li>
+<li>G35R 2</li>
+<li>Encode the Variation feature by using two methods
+	<ul>
+		<li>Response encoding</li>
+		<li>One hot encoding</li>
+	</ul>
+</li>
+		</ul>
+	</li>
+	<li>Univariate analysis of text data
+		<ul>
+			<li>How many unique words are present in train data How are word frequencies distributed</li>
+<li>How to featurize text field</li>
+<li>Is the text feature useful in predicitng y_i</li>
+<li>Is the text feature stable across train, test and CV datasets</li>
+		</ul>
+	</li>
+<li>Create different models using different feature engineering technique to reduce the log loss</li>
+
+</ul>
+<h2>Models</h2>
+<ul>
+	<li>Use Naive bayes as a base line model by tuning hyperparameter alpha.
+		<ul>
+			<li>The train log loss is: 0.9196471036995568</li>
+<li>The cross validation log loss is: 1.221487337436015</li>
+<li>The test log loss is: 1.2234001599136723</li>
+<li>Number of missclassified point : 0.4041353383458647</li>
+		</ul>
+	</li>
+	<li>KNN after tuning hyper parameter
+		<ul>
+			<li>The train log loss is: 0.45066910158493606</li>
+<li>The cross validation log loss is: 1.0591893257455758 The test log loss is: 1.1337135775091833</li>
+<li>Number of mis-classified points : 0.3383458646616541 The KNN is over fit on the training data</li>
+		</ul>
+	</li>
+	<li>Logistic Regression Model
+		<ul>
+			<li>The train log loss is: 0.4435948844419014</li>
+<li>The cross validation log loss is: 1.1135629712695907 The test log loss is: 1.0852111629109962</li>
+<li>Number of mis-classified points : 0.36654135338345867</li>
+		</ul>
+	</li>
+	<li>Linear Support Vector Machine
+		<ul>
+			<li>The train log loss is: 0.5032802633082448</li>
+<li>The cross validation log loss is: 1.140529889373972 The test log loss is: 1.1286525696464762</li>
+<li>Number of mis-classified points : 0.35902255639097747</li>
+		</ul>
+	</li>
+	<li>Random Forest
+		<ul>
+			<li>The train log loss is: 0.6381076972467927</li>
+<li>The cross validation log loss is: 1.165287359677549 The test log loss is: 1.1600911117961532</li>
+<li>Number of mis-classified points : 0.38533834586466165</li>
+		</ul>
+	</li>
+	<li>Stack Models
+		<ul>
+			<li>Improve the performance and reduce the log loss by stacking the model and use maximum voting to predict the final out put</li>
+		</ul>
+	</li>
+</ul>
+
+								
+                <!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

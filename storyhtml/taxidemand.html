@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Taxi demand prediction in New York City</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="#" class="logo">Taxi demand prediction in New York City</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+                            <!--
+							<li><a href="index.html">This is Massively</a></li>
+							<li><a href="generic.html">Generic Page</a></li>-->
+							<li class="active"><a href="#">Taxi demand prediction in New York City</a></li>
+						</ul>
+						<ul class="icons">
+                            <!--
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                            
+							<li><a href="https://github.com/piyushnishantedu/Quora-Question-Pair-Similarity" class="icon brands fa-github"><span class="label">GitHub</span></a></li>-->
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Taxi demand prediction in New York City<br />
+                                    </h1>
+								</header>
+
+								<!-- Text stuff -->
+									<h2>Business Problem</h2>
+									<p>These are the famous NYC yellow taxis that provide transportation exclusively through street-hails. The number of taxicabs is limited by a finite number of medallions issued by the TLC. You access this mode of transportation by standing in the street and hailing an available taxi with your hand. The pickups are not pre- arranged.
+										For Hire Vehicles (FHVs)
+FHV transportation is accessed by a pre-arrangement with a dispatcher or limo company. These FHVs are not permitted to pick up passengers via street hails, as those rides are not considered pre-arranged.
+Green Taxi: Street Hail Livery (SHL)
+The SHL program will allow livery vehicle owners to license and outfit their vehicles with green borough taxi branding, meters, credit card machines, and ultimately the right to accept street hails in addition to pre- arranged rides.
+
+                                        
+                                        </p>
+									<hr />
+                                    <h2>Problem Statement</h2>
+                                    <p>Predict taxidemand in new york city in 10 minute interval</h2>
+                                    
+									<h1>Steps<br />
+                                    </h1>
+                                    <h2>
+                                    	Data Collection
+                                    </h2>
+                                    <Ul>
+                                    	<li>
+                                    		Download the data set from NYC website.
+                                    	</li>
+                                    	<li>
+                                    		Data download Url: http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml (http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml)
+                                    	</li>
+                                    	<li>
+                                    		We collect the trip data for 2016 January, February March, 2015 data for the month January February and march #### Data Reading
+                                    	</li>
+                                    	<li>
+                                    		Data is too large so we choose dask framework to load the data. #### Basic Exploration
+                                    	</li>
+                                    	<li>
+                                    		get the number of features in available data set
+                                    	</li>
+                                    	<li>
+                                    		Number of data points availabe in data set
+                                    	</li>
+                                    	<li>
+                                    		Get the latitude and longitude related information of newyork #### Data Analysis
+                                    	</li>
+                                    	<li>
+                                    		There are columns related to latitude and longitude. When we plot the data points on the basis of latitude and longitude then we find that theere are many points which are not in newyork city m even some points are showing location in ocean. ##### Trip Duration analysis
+                                    	</li>
+                                    	<li>
+                                    		According to NYC taxi regulation maximum trip duration is 24 hrs and interval is 12 hrs.
+                                    	</li>
+                                    	<li>
+                                    		We get maximum trip duration is 8333 hrs which is use less and the data point is meaning less.
+                                    	</li>
+                                    	<li>
+                                    		We remove the data points which has trip duration more than 24hrs , - ve and very heigh value.
+                                    	</li>
+                                    	<li>
+                                    		Most of the data points has trip time upto 100 and very few data points has trip duration more than 100.
+                                    	</li>
+                                    	<li>
+                                    		Transform the trip duration using log function we got that pdf of trip duration is approximately normal distributation
+                                    	</li>
+                                    	<li>
+                                    		We also check trip time distributation using QQ plot to verify the distribuation ##### Analysis of speed
+                                    	</li>
+                                    	<li>
+                                    		we carte a extra feature speed we found that minimum speed is zero which is feasible but the maximum speed is 2*10^8 which is not feasible for taxi or any vechile.
+                                    	</li>
+                                    	<li>
+                                    		99th percentile of data point which have speed around 35km/hr and 100th percentile data points has very high speed. ##### Trip distance analysis
+                                    	</li>
+                                    	<li>
+                                    		99.9th percentile of data points have trip distance 22.57 km and 100th percentile data points has 258Km ##### Total Fare naalysis
+                                    	</li>
+                                    	<li>
+                                    		Maximum fare is 4000000 which is erroneous value. From the box plot it can not be said that up to which fare is considerable ##### Trip Time:
+                                    	</li>
+                                    	<li>
+                                    		When we categorise the data point in morning, day, evening,night,midnight on the basis of time information we found that the maxmum trip occuring in office hour and evening hour. #### Data Cleaning
+                                    	</li>
+                                    	<li>
+                                    		Study the latitude and longitude feature information of the given data set
+                                    	</li>
+                                    	<li>
+                                    		Check the bounding latitude and longitude of newyork city so that we restricted to analyse the data related to Newyork city only
+                                    	</li>
+                                    	<li>
+                                    		Detect the data points which are not included in neywork cordinate, declare such data points as outlier and remove from data set
+                                    	</li>
+                                    	<li>
+                                    		Remove the data points which are not valid on the basis of trip distance, speed, and trip time analysis #### Data Preparation ##### Clusturing
+                                    	</li>
+                                    	<li>
+                                    		We clusture the data points on the basis of pickup latitude and longitude.
+                                    	</li>
+                                    	<li>
+                                    		We create the number of clusture by using constraint Min inter-cluster distance = 0.5069768450365043
+                                    	</li>
+                                    	<li>
+                                    		we get total number of clusture is 40 using kmeans
+                                    	</li>
+                                    	<li>
+                                    		The main objective was to find a optimal min. distance(Which roughly estimates to the radius of a cluster) between the clusters which we got was 40 #### Modelling: Baseline Models
+                                    	</li>
+                                    	<li>
+                                    		Now we get into modelling in order to forecast the pickup densities for the months of Jan, Feb and March of 2016 for which we are using multiple models with two variations
+                                    	</li>
+                                    	<li>
+                                    		Using Ratios of the 2016 data to the 2015 data i.e 𝑅𝑡=𝑃2016𝑡/𝑃2015𝑡
+                                    	</li>
+                                    	<li>
+                                    		Using Previous known values of the 2016 data itself to predict the future values
+                                    	</li>
+
+                                    </Ul>
+                                    <h4>Simple Moving Averages</h4>
+                                    <p>
+                                    	The First Model used is the Moving Averages Model which uses the previous n values in order to predict the next value Using Ratio Values - 𝑅𝑡=(𝑅𝑡−1+𝑅𝑡−2+𝑅𝑡−3....𝑅𝑡−𝑛)/𝑛
+</br>
+In this approach the Hyperparameter is the window-size (n) which is tuned manually and it is found that the window-size of 3 is optimal for getting the best results using Moving Averages using previous Ratio values therefore we get 𝑅𝑡=(𝑅𝑡−1+𝑅𝑡−2+𝑅𝑡−3)/3
+</br>
+Next we use the Moving averages of the 2016 values itself to predict the future value using 𝑃𝑡= (𝑃𝑡−1+𝑃𝑡−2+𝑃𝑡−3....𝑃𝑡−𝑛)/𝑛
+</br>
+                                    </p>
+                                    <h2>Weighted Moving Averages</h2>
+                                    <p>
+                                    	The Moving Avergaes Model used gave equal importance to all the values in the window used, but we know intuitively that the future is more likely to be similar to the latest values and less similar to the older values. Weighted Averages converts this analogy into a mathematical relationship giving the highest weight while computing the averages to the latest previous value and decreasing weights to the subsequent older ones Weighted Moving Averages using Ratio Values - 𝑅𝑡=(𝑁∗𝑅𝑡−1+(𝑁−1)∗𝑅𝑡−2+ (𝑁−2)∗𝑅𝑡−3....1∗𝑅𝑡−𝑛)/(𝑁∗(𝑁+1)/2)
+</br>
+the Hyperparameter is the window-size (n) which is tuned manually and it is found that the window-size of 5 is optimal for getting the best results using Weighted Moving Averages using previous Ratio values therefore we get 𝑅𝑡=(5∗𝑅𝑡−1+4∗𝑅𝑡−2+3∗𝑅𝑡−3+2∗𝑅𝑡−4+𝑅𝑡−5)/15
+</br>
+Weighted Moving Averages using Previous 2016 Values - 𝑃𝑡=(𝑁∗𝑃𝑡−1+(𝑁−1)∗𝑃𝑡−2+ (𝑁−2)∗𝑃𝑡−3....1∗𝑃𝑡−𝑛)/(𝑁∗(𝑁+1)/2)
+</br>
+                                    </p>
+                                    <h2>Exponential Weighted Moving Averages
+</h2>
+<p>
+	https://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average Through weighted averaged we have satisfied the analogy of giving higher weights to the latest value and decreasing weights to the subsequent ones but we still do not know which is the correct weighting scheme as there are infinetly many possibilities in which we can assign weights in a non-increasing order and tune the the hyperparameter window-size. To simplify this process we use Exponential Moving Averages which is a more logical way towards assigning weights and at the same time also using an optimal window-size.
+In exponential moving averages we use a single hyperparameter alpha (𝛼) which is a value between 0 & 1 and based on the value of the hyperparameter alpha the weights and the window sizes are configured. </br>
+For eg. If 𝛼=0.9 then the number of days on which the value of the current iteration is based is~1/(1−𝛼)=10 i.e. we consider values 10 days prior before we predict the value for the current iteration. Also the weights are assigned using 2/(𝑁+1)=0.18 ,where N = number of prior values being considered, hence from this it is implied that the first or latest value is assigned a weight of 0.18 which keeps exponentially decreasing for the subsequent values. 𝑅′𝑡=𝛼∗𝑅𝑡−1+(1−𝛼)∗𝑅′𝑡−1
+</p>
+<h2>Regression Models</h2>
+<h2>Train-Test Split</h2>
+<p>Before we start predictions using the tree based regression models we take 3 months of 2016 pickup data and split it such that for every region we have 70% data in train and 30% in test, ordered date-wise for every region
+</br>
+When we analye the data on the basis of time feature we get the some periodic pattern in data so we transform the data using furrier transform and include top 5 furrier frequency and amplitude feture in train and test data set
+</br></p>
+<h2>Using Linear Regression</h2>
+<p>We used SGDRegressor with loss is squared and penalty is l2 and tune alpha using grid search to get the optiomal value of alpha. On the basis of optimal value of alpha we get the best test MAPE = 0.11583188928851308
+</br></p>
+<h2>Using Random Forest Regressor</h2>
+<p>We use Randomforest regressior an tune max depth and number of estimator using Randomized cv. We get optimal value of max depth and number of estimator and test MAPE = 0.1091007345478511
+</br></p>
+<h2>XGBRegressor</h2>
+<p>We use XGBRegressor and tune eta, n_estimators,max_depth,learning_rate,gamma,subsample by using RandomizedsearchCv we get the test MAPE = 0.12876044347677998
+</br>
+								
+                <!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</diRegression Modelsv>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Facebook Challenge</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="#" class="logo">Facebook Challenge</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+                            <!--
+							<li><a href="index.html">This is Massively</a></li>
+							<li><a href="generic.html">Generic Page</a></li>-->
+							<li class="active"><a href="#">Facebook Challenge</a></li>
+						</ul>
+						<ul class="icons">
+                            <!--
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                            
+							<li><a href="https://github.com/piyushnishantedu/Quora-Question-Pair-Similarity" class="icon brands fa-github"><span class="label">GitHub</span></a></li>-->
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Facebook Challenge</h1>
+								</header>
+
+								<h2>Problem statement:</h2>
+								<p>Given a directed social graph, have to predict missing links to recommend users (Link Prediction in graph)</p></br>
+								<h2>Data Overview</h2>
+								<p>Taken data from facebook's recruting challenge on kaggle https://www.kaggle.com/c/FacebookRecruiting
+data contains two columns source and destination eac edge in graph - Data columns (total 2 columns):</br>
+- source_node int64</br>
+- destination_node int64</p>
+<h2>Mapping the problem into supervised learning problem:</h2>
+<ul>
+	<li>Generated training samples of good and bad links from given directed graph and for each link got some features like no of followers, is he followed back, page rank, katz score, adar index, some svd fetures of adj matrix, some weight features etc. and trained ml model based on these features to predict link.</li>
+	<li>Some reference papers and videos :
+		<ul>
+			<li>https://www.cs.cornell.edu/home/kleinber/link-pred.pdf</li>
+<li>https://www3.nd.edu/~dial/publications/lichtenwalter2010new.pdf</li>
+<li>https://kaggle2.blob.core.windows.net/forum-message-attachments/2594/supervised_link_prediction.pdf</li>
+<li>https://www.youtube.com/watch?v=2M77Hgy17cg</li>
+		</ul>
+	</li>
+
+</ul>
+<h2>Business objectives and constraints:</h2>
+<ul>
+	<li>No low-latency requirement.</li>
+<li>Probability of prediction is useful to recommend ighest probability links</li>
+</ul>
+<h2>Performance metric for supervised learning:</h2>
+<ul>
+	<li>Both precision and recall is important so F1 score is good choice</li>
+<li>Confusion matrix</li>
+</ul>
+<h2>Steps to solved the problem</h2>
+<ul>
+	<li>Gethering data set
+		<ul>
+			<li>Download data set from kaggle</li>
+		</ul>
+	</li>
+	<li>Read data set
+		<ul>
+			<li>Read the train.csv file</li>
+			<li>Train data has only source and destination node</li>
+		</ul>
+	</li>
+	<li>Check duplicate data
+		<ul>
+			<li>We found there are no duplicate data points</li>
+		</ul>
+	</li>
+	<li>Use network library to see the edge and node
+		<ul>
+			<li>Number of nodes: 1862220</li>
+<li>Number of edges: 9437519</li>
+<li>Average in degree: 5.0679</li>
+<li>Average out degree: 5.0679</li>
+		</ul>
+	</li>
+	<li>EDA
+		<ul>
+			<li>Number of unique person = 1862220</li>
+<li>Analysis of some node in and out degree</li>
+<li>In degree is highly skewed</li>
+<li>Upto 99th percentile in degree is 40 but at the 100th percentile in degree is 552</li>
+<li>Out degree is also skewed</li>
+<li>99th percentile of out degree is 40 and 100th percentile is 1566</li>
+<li>99th percentile of in-out degree is 79 and 100th is 1579</li>
+<li>Min of no of followers + following is 1</li>
+<li>334291 persons having minimum no of followers + following</li>
+<li>Max of no of followers + following is 1579</li>
+<li>1 persons having maximum no of followers + following</li>
+		</ul>
+	</li>
+<li>Posing a problem as classification problem
+	<li>Generating some edges which are not present in graph for supervised learning</li>
+</li>
+<li>Training and Test data split
+<li>Removed edges from Graph and used as test data and after removing used that graph for creating features for Train and test data</li>
+</li>
+</ul>
+<h2>Feature Engineering</h2>
+<h3>Create some features which are used for graphical data</h3>
+<ul>
+	<li>Jaccard Distance</li>
+<li>Cosine distance</li>
+<li>Ranking Measures</li>
+<li>Page Ranking</li>
+<li>Shortest path</li>
+<li>Checking for same community</li>
+<li>Adamic/Adar Index</li>
+<li>Is persion was following back</li>
+<li>Katz Centrality</li>
+<li>Hits Score</li>
+<li>Adding a set of features
+	<ol>
+		<li>jaccard_followers</li>
+<li>jaccard_followees</li>
+<li>cosine_followers</li>
+<li>cosine_followees</li>
+<li>num_followers_s</li>
+<li>num_followees_s</li>
+<li>num_followers_d</li>
+<li>num_followees_d</li>
+<li>inter_followers</li>
+<li>adar index</li>
+<li>is following back</li>
+<li>belongs to same weakly connect components</li>
+<li>shortest path between source and destination
+Weight Features
+	<ul>
+		<li>weight of incoming edges</li>
+<li>weight of outgoing edges</li>
+<li>weight of incoming edges + weight of outgoing edges</li>
+<li>weight of incoming edges * weight of outgoing edges</li>
+<li>2*weight of incoming edges + weight of outgoing edges</li>
+<li>weight of incoming edges + 2*weight of outgoing edges</li>
+	</ul>
+</li>
+<li>Page Ranking of source</li>
+<li>Page Ranking of dest</li>
+<li>katz of source</li>
+<li>katz of dest</li>
+<li>hubs of source</li>
+<li>hubs of dest</li>
+<li>authorities_s of source</li>
+<li>authorities_s of dest</li>
+	</ol>
+</li>
+</li>
+</ul>
+<p> SVD features for both source and destination - Preferential attachment ### Model Building</p></br>
+<ul>
+	<li>RandomForestClassifier hyper parameter is tuned using RandomizedSearchCV</li>
+	<li>XGBClassifier hyper parameter is tuned using RandomizedSearchCV</li>
+</ul>
+                <!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

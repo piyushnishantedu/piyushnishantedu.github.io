@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Stack Overflow: Tag Prediction</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="#" class="logo">Stack Overflow: Tag Prediction</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+                            <!--
+							<li><a href="index.html">This is Massively</a></li>
+							<li><a href="generic.html">Generic Page</a></li>-->
+							<li class="active"><a href="#">Stack Overflow: Tag Prediction</a></li>
+						</ul>
+						<ul class="icons">
+                            <!--
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                            
+							<li><a href="https://github.com/piyushnishantedu/Quora-Question-Pair-Similarity" class="icon brands fa-github"><span class="label">GitHub</span></a></li>-->
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Stack Overflow: Tag Prediction</h1>
+								</header>
+
+								<h2>Steps to solve the problems</h2>
+								<h3>Data gethering</h3>
+								<ul>
+									<li>Use panda and sqlite library toload the data set</li>
+								</ul>
+								<h3>Data Analysis</h3>
+								<ul>
+									<li>Counting total data points in training data</li>
+<li>Total number of data points is 6034196</li>
+<li>Checking duplicate data points</li>
+<li>Duplicate question 30.29%</li>
+<li>Check the distributation of duplicate questions</li>
+<li>Finding duplicate tags and anlysie its distributation</li>
+<li>Remove duplicate questions and save the data have no duplicate data points using sqlite</li>
+
+								</ul>
+								<h3>Tag Analysis</h3>
+								<ul>
+									<li>Number of data points : 4206314</li>
+<li>Number of unique tags : 42048</li>
+<li>Check the distributation of tags (Number of times)</li>
+<li>There are total 153 tags which are used more than 10000 times.</li>
+<li>14 tags are used more than 100000 times.</li>
+<li>Most frequent tag (i.e. c#) is used 331505 times.</li>
+<li>Since some tags occur much more frequenctly than others, Micro-averaged F1-score is the appropriate metric for this probelm.</li>
+<li>Maximum number of tags per question: 5</li>
+<li>Minimum number of tags per question: 1</li>
+<li>Avg. number of tags per question: 2.899440</li>
+<li>Most of the questions are having 2 or 3 tags</li>
+<li>"c#", "java", "php", "asp.net", "javascript", "c++" are some of the most frequent tags.</li>
+<li>Majority of the most frequent tags are programming language.</li>
+<li>C# is the top most frequent programming language.</li>
+<li>Android, IOS, Linux and windows are among the top most frequent operating systems.</li>
+								</ul>
+								<h3>Preprocessing</h3>
+								<ul>
+									<li>Sample 1M data points</li>
+<li>Separate out code-snippets from Body</li>
+<li>Remove Spcial characters from Question title and description (not in code)</li>
+<li>Remove stop words (Except 'C')</li>
+<li>Remove HTML Tags</li>
+<li>Convert all the characters into small letters</li>
+<li>Use SnowballStemmer to stem the words</li>
+<li>Create new data base for preprocessed data</li>
+								</ul>
+								<h2>Machine Learning Models</h2>
+								<ul>
+									<li>Converting tags for multilabel problems</li>
+<li>We will sample the number of tags instead considering all of them (due to limitation of computing power)</li>
+<li>Split the data into test and train (80:20)</li>
+<li>Featurizing data
+<ul>
+	<li>Use TfidfVectorizer</li>
+<li>Use TfidfVectorizer of words upto 4 grams</li>
+</ul>
+<li>Modeling with less data points (0.5M data points) and more weight to title and 500 tags only.</li>
+<li>5500 tags we are covering 99.157 % of questions</li>
+<li>500 tags we are covering 90.956 % of questions</li>
+<li>Applying Logistic Regression with OneVsRest Classifier</li>
+<li>Applying Linear Support vector Machine with OneVsRest</li>
+<li>Use grid search for hyper parameter tuning</li>
+</li>
+								</ul>
+-->
+                <!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

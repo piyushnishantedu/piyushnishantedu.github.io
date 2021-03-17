@@ -465,53 +465,35 @@ mean_len = (len(q1_tokens) + len(q2_tokens))/2
                                     
                                     <header>
 										<h4>Linear SVM</h4>
-										<p>Data Collection process</p>
+										<p>We selecr alpha as hyper-parameter</p>
+										<code>
+											alpha = [10 ** x for x in range(-5, 2)] # hyperparam for SGD classifier.
+										</code>
+										<span class="image fit"><img src="assets/quora/cnf1.png" alt="" /> </span>
+							
 									</header>
-                                    <p>How to collect data</p>
+                                    
                                     
                                     <header>
 										<h4>XGBoost</h4>
-										<p>Data Collection process</p>
-									</header>
-                                    <p>How to collect data</p>
-                                    
-                                    <header>
-										<h3>Model Building with TFIDF features</h3>
-										<p>Data Collection process</p>
-									</header>
-                                    <p>How to collect data</p>
-                                    <header>
-										<h4>Random Model</h4>
-										<p>Data Collection process</p>
-									</header>
-                                    <p>How to collect data</p>
-                                    
-                                    <header>
-										<h4>Logistic Regression</h4>
-										<p>Data Collection process</p>
-									</header>
-                                    <p>How to collect data</p>
+										<p>train-logloss:0.68476	valid-logloss:0.68471
+Multiple eval metrics have been passed: 'valid-logloss' will be used for early stopping</p>
+										<code>
+											max_depth = [1,5,7,9,11,13,15,17,21,29,30]
 
-                                    <header>
-										<h4>Random Model</h4>
-										<p>Data Collection process</p>
+										</code>
+										<span class="image fit"><img src="assets/quora/cnf2.png" alt="" /> </span>
 									</header>
-                                    <p>How to collect data</p>
                                     
-                                    <header>
-										<h4>Hyper parameter tuning of XGBoost</h4>
-										<p>Data Collection process</p>
-									</header>
-                                    <p>How to collect data</p>
-
+                                    
+                               
                                     <header>
 										<h3>Model Comparision</h3>
-										<p>Data Collection process</p>
+										<span class="image fit"><img src="assets/quora/model_com.png" alt="" /> </span>
+								
                                     </header>
                                     <header>
-										<h3>Conclusion</h3>
-										<span class="image fit"><img src="../images/bg.jpg" alt="" /> </span>
-								
+                                    	<h3 style="color:green;">XGBOOST model with TFIDF W2VEC has minimum log loss</h3>
                                     </header>
                                     
 									<hr />
