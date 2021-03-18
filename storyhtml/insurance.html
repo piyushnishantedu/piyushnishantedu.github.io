@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Personalized cancer diagnosis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="#" class="logo">Personalized cancer diagnosis</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+                            <!--
+							<li><a href="index.html">This is Massively</a></li>
+							<li><a href="generic.html">Generic Page</a></li>-->
+							<li class="active"><a href="#">Personalized cancer diagnosis</a></li>
+						</ul>
+						<ul class="icons">
+                            <!--
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                            
+							<li><a href="https://github.com/piyushnishantedu/Quora-Question-Pair-Similarity" class="icon brands fa-github"><span class="label">GitHub</span></a></li>-->
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Predicting Insurance Premiums<br />
+                                    </h1>
+								</header>
+								<h2>Problem Statement</h2>
+								<p> Predict Insurance premium for new customer</p></br>
+								<p> I have taken the smaple from large data set and use subset of features</p>
+								<ul>
+									<li>Our simple dataset contains a few attributes for each person such as</li>
+<li>Age, Sex, BMI, Children, Smoker, and their charges</li>
+								</ul>
+								<h2> Goal</h2>
+								<ul>
+									<li>To use this info to predict charges for new customers</li>
+								</ul>
+								<h4> Data Collection</h4>
+								<ul>
+									<li> Collect data from  different sources</li>
+									<li> Use Alchemy to connect data bases</li>
+									<li>Merge data from different data sources</li>
+								</ul>
+								<h4> Data Reading</h4>
+								<ul>
+									<li> Read the sample data using panas</li>
+								</ul>
+								<span class="image fit"><img src="assets/insurance/1.png" alt="" /> </span>
+								<ul>
+									<li> There are 6 columns one column is the target(Charges)
+										<ul>
+											<li> age</li><li>sex</li><li>BMI</li>children</ul><li>region</li>
+										</ul>
+									</li>
+
+								</ul>
+								<h4>Exploratory Data analysis</h4>
+								<span class="image fit"><img src="assets/insurance/2.png" alt="" /> </span>
+								<ul>
+									<li>Minimum charge is quite low</li>
+									<li>Maximum charge is quite heigh</li>
+									<li>Mean of BMI is high</li>
+								</ul>
+								<h4> Corelation plot among features</h4>
+								<span class="image fit"><img src="assets/insurance/3.png" alt="" /> </span>
+								<h5> Age Analysis</h5>
+								<span class="image fit"><img src="assets/insurance/4.png" alt="" /> </span>
+								<ul>
+									<li> There is peak in the graph and age is arround 20. So young people are more</li>
+									<li>After age 20 the graph is is quite even across to the max age</li>
+								</ul>
+								<h5> BMI Analysis</h5>
+								<span class="image fit"><img src="assets/insurance/5.png" alt="" /> </span>
+								<ul>
+									<li> The distributation of BMI is look like normal</li>
+									<li> Very few people has less emi</li>
+									<li>some people hase also large BMI</li>
+									<li> BMI average is 30</li>
+									<li>Most of the people have BMI 30</li>
+								</ul>
+								<h5>Children Analysis</h5>
+								<span class="image fit"><img src="assets/insurance/6.png" alt="" /> </span>
+								<ul>
+									<li> Majority of people have 0 children </li>
+									<li>The grpah looks like skewed which is obvious because Most of the people have 1 or 2 children</li>
+									<li>Very few people has 5 children</li>
+								</ul>
+								<h5>Charge Analysis</h5>
+								<span class="image fit"><img src="assets/insurance/7.png" alt="" /> </span>
+								<ul>
+									<li> Most of the people has charges arround 10000</li>
+									<li>Very few people has high charges more than 50000</li>
+								</ul>
+								<h5> Smoker Analysis</h5>
+								<span class="image fit"><img src="assets/insurance/8.png" alt="" /> </span>
+								<ul>
+									<li> Most of the people are no smoker</li>
+									<li>Few people are smoker</li>
+									<li>It might be posiible that smoker are paying high charges</li>
+								</ul>
+								<span class="image fit"><img src="assets/insurance/9.png" alt="" /> </span>
+								<ul>
+									<li>
+										From the plot it seems that the people who are not smoking and less BMI paying less charges
+									</li>
+									<li> The people who are smoing and high BMI paying more charges</li>
+									<li> It seems that Smoker will be good feature for ML model</li>
+								</ul>
+								<h5> Analysis of Male and female participation in charges</h5>
+								<span class="image fit"><img src="assets/insurance/10.png" alt="" /> </span>
+								<ul>
+									<li>It seems that Male and female has equal participation in charges</li>
+								</ul>
+								<h5> Pairplot analysis</h5>
+								<span class="image fit"><img src="assets/insurance/11.png" alt="" /> </span>
+								<ul>
+									<li>The people hase more age paying more charges</li>
+									<li>The people has more BMI and smiker paying more</li>
+
+								</ul>
+								<h4>Preparing Data for Machine Learning Algorithms</h4>
+								<ul>
+									<li>Convert categorical column into numerical column</li>
+									<li>Standard scale transformation for charge column</li>
+								</ul>
+								<h5>Train Test split</h5>
+								<ul>
+									<li>Divide data set into train test and validation set</li>
+									<li>Validation data set is used to tune hyper parameter</li>
+									<li>Test data set used for validate the model</li>
+								</ul>
+								<h5>Performance Metric</h5>
+								<ul>
+									<li> Adjusted R square</li>
+								</ul>
+								<h5>Models That i have used </h5>
+								<ul>
+									<li> Linear regression,  tune hyper parameter. Use different regulaizer</li>
+									<li>DecisionTreeRegressor, Tune hyper parameter for tree</li>
+									<li>RandomForestRegressor, Tune hyper parameter for tree</li>
+									<li>Support vector regressor, Tune hyper parameter</li>
+									<li>Polynomial regression</li>
+
+								</ul>
+								<h2> Model Comparision</h2>
+								<span class="image fit"><img src="assets/insurance/12.png" alt="" /> </span>
+								<h4 style="color: green"> Best Model is RandomForest Regression</h4>
+								
+                <!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
