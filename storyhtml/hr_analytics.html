@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>HR Analytics</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="#" class="logo">HR Analytics</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+                            <!--
+							<li><a href="index.html">This is Massively</a></li>
+							<li><a href="generic.html">Generic Page</a></li>-->
+							<li class="active"><a href="#">HR Analytics</a></li>
+						</ul>
+						<ul class="icons">
+                            <!--
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                            
+							<li><a href="https://github.com/piyushnishantedu/Quora-Question-Pair-Similarity" class="icon brands fa-github"><span class="label">GitHub</span></a></li>-->
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>HR Analytics<br />
+                                    </h1>
+								</header>
+								<h2>Problem Statement</h2>
+								<p> Predict the likelyhood to quit employee </p></br>
+								<p> I have taken the smaple from large data set and use subset of features</p>
+								<ul>
+									<li>Our simple dataset contains a few attributes for each person such as</li>
+<li>Job Involvement, Education, Job Satisfaction, Performance Rating, Relation ship satisfaction, Work life balance</li>
+								</ul>
+								<h2> Goal</h2>
+								<ul>
+									<li>To use this info to predict the likely hood to quit employee</li>
+								</ul>
+								<h4> Data Collection</h4>
+								<ul>
+									<li> Collect data from  different sources</li>
+									<li>Merge data from different data sources</li>
+								</ul>
+								<h4> Data Reading</h4>
+								<ul>
+									<li> Read the sample data using panas</li>
+								</ul>
+								<span class="image fit"><img src="assets/Hranalytics/1.png" alt="" /> </span>
+								<ul>
+									<li> There are following features that is subset of the full feature of original data set
+										<ul>
+											<li>Age</li>
+											<li>Attrition</li>
+											<li>BusinessTravel</li>
+											<li>DailyRate</li>
+											<li>Department</li>
+											<li>DistanceFromHome</li>
+											<li>Education</li>
+											<li>EducationField</li>
+											<li>EmployeeCount</li>
+											<li>EmployeeNumber</li>
+											<li>EnvironmentSatisfaction</li>
+											<li>Gender</li>
+											<li>HourlyRate</li>
+											<li>JobInvolvement</li>
+											<li>JobLevel</li>
+											<li>JobRole</li>
+											<li>JobSatisfaction</li>
+											<li>MaritalStatus</li>
+											<li>MonthlyIncome</li>
+										</ul>
+									</li>
+								</ul>
+								<h4>Exploratory Data analysis</h4>
+								<ul>
+									<li>Number of employees who left the company = 237</li>
+									<li>Percentage of employees who left the company = 16.122448979591837 %</li>
+									<li>Number of employees who did not leave the company (stayed) = 1233</li>
+									<li>Percentage of employees who did not leave the company (stayed) = 83.87755102040816 %</li>
+									<li>Data is highly imbalance</li>
+								</ul>
+								<h4> Corelation plot among features</h4>
+								<span class="image fit"><img src="assets/Hranalytics/2.png" alt="" /> </span>
+								<h5> Age Analysis</h5>
+								<span class="image fit"><img src="assets/Hranalytics/3.png" alt="" /> </span>
+								<ul>
+									<li> The distributation is look like normal but it is not exactly norml</li>
+									<li>The employee has more age seems not to quite company</li>
+									<li> The employee has less age tends to quite company frequently</li>
+								</ul>
+								<h5> Analysis for Job Role, Marrital Status, Job Involvement, Job Level</h5>
+								<span class="image fit"><img src="assets/Hranalytics/4.png" alt="" /> </span>
+								<span class="image fit"><img src="assets/Hranalytics/5.png" alt="" /> </span>
+								<span class="image fit"><img src="assets/Hranalytics/6.png" alt="" /> </span>
+								<ul>
+									<li>Reseracher, Manager and health directors are more tends to quite job </li>
+									<li>Single people tends to quite job in comparision of Married and Divorced</li>
+									<li>Higher job level tends to quite job</li>
+								</ul>
+			
+								<span class="image fit"><img src="assets/Hranalytics/8.png" alt="" /> </span>
+								<ul>
+									<li> It is not clear whihc employee tend to quite job when they have distance from office </li>
+		
+								</ul>
+								
+								<span class="image fit"><img src="assets/Hranalytics/9.png" alt="" /> </span>
+								<ul>
+									<li> Employee income is right skewed </li>
+									<li>Some employee has huge income</li>
+									<li>Mean employee  income is 5200 </li>
+
+								</ul>
+								<h5> Employee income by job role</h5>
+								<span class="image fit"><img src="assets/Hranalytics/10.png" alt="" /> </span>
+								<ul>
+									<li>Researchers director, manager have very high income</li>
+									<li>Sales person has very less salary</li>
+									<li>Laboritory Technician and Scientist has same salary although they have some oulier</li>
+								</ul>
+								<h5> Data Split </h5>
+								<ul>
+									<li> Split the data set into train, test and validation set</li>
+									<li> Train set used to train the model</li>
+									<li>Validation set used to Bias-variance tradeoff</li>
+									<li>Test Set is used to test the model performance</li>
+								</ul>
+
+								<h2> Models That i used</h2>
+								<ul>
+									<li>
+										Logistic Regression
+									</li>
+									<li>Randomforest</li>
+									<li>XGBoost</li>
+									<li>AdaBoost</li>
+									<li>Deep Learning Model with high Drop rate and tried different architure and different optimiser</li>
+								</ul>
+								<h3 style="color: green">Deep learning Model is the best</h3>
+								<span class="image fit"><img src="assets/Hranalytics/11.png" alt="" /> </span>
+								
+                <!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
